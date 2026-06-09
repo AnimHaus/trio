@@ -6,10 +6,10 @@ import WordReveal from '@/components/WordReveal'
 import TransitionLink from '@/components/TransitionLink'
 
 const stats = [
-  { value: '2003', label: 'Founded' },
-  { value: '20+', label: 'Years of storytelling' },
-  { value: '1', label: 'International Emmy Nomination' },
-  { value: '4+', label: 'Seasons of Lamput' },
+  { value: '2018', label: 'Founded' },
+  { value: '100%', label: 'Client satisfaction' },
+  { value: '50+', label: 'Projects delivered' },
+  { value: '10+', label: 'Services offered' },
 ]
 
 function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -39,15 +39,16 @@ export default function AboutSection() {
         </FadeIn>
 
         <div className="font-display text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-none">
-          <WordReveal text="Vaibhav" as="span" className="text-white" delay={0.1} />
+          <WordReveal text="Vaibhavi" as="span" className="text-white" delay={0.1} />
           <br />
           <WordReveal text="Studios" as="span" className="text-primary" delay={0.1} />
         </div>
 
         <FadeIn delay={0.2} className="mt-5 max-w-2xl">
           <p className="text-base md:text-lg text-muted/80 leading-relaxed">
-            India&apos;s favourite animation studio — the only Indian studio to receive an
-            International Emmy nomination — now bringing you the country&apos;s first original anime.
+            An independent creative house under Vaibhavi Enterprises — crafting compelling visuals,
+            motion graphics, character design, and VFX since 2018. We bring stories to life across
+            every medium.
           </p>
         </FadeIn>
 
@@ -63,36 +64,48 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 mt-12 md:mt-16 pt-12 md:pt-16 border-t border-white/5">
           <FadeIn>
             <div className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
-              <WordReveal text="Storytellers first," as="span" />
+              <WordReveal text="Creativity meets" as="span" />
               <br />
-              <WordReveal text="animators always." as="span" />
+              <WordReveal text="craftsmanship." as="span" className="text-primary" />
             </div>
             <p className="text-muted/70 leading-relaxed mb-4">
-              Founded in 2003, Vaibhav Studios has produced some of India&apos;s most
-              successful and beloved animated content. We script, design, direct
-              and produce animation films — and as storytellers at heart, we are
-              happiest creating original work that connects with audiences across
-              the world.
+              Vaibhavi Studios is an independent house under Vaibhavi Enterprises, specialising in
+              Infographic, Motion Graphics, Character Design (2D &amp; 3D), Storyboarding, VFX,
+              Video Editing, Content Creation, and Logo Design. We&apos;ve been in this field since
+              2018, delivering across diverse projects.
             </p>
             <p className="text-muted/70 leading-relaxed">
-              Our projects span Television Commercials, Episodic Series, Public
-              Service Announcements, Channel Idents, Music Videos, Short Films
-              and Feature Length Films. We work across every medium — from
-              traditional 2D to stop motion, puppet, cut-out, 3D CGI and mixed
-              media.
+              Our work spans contributions to EDU Venture for Notebooks, VFX shots for the movie
+              Thallaiva, Cartoon Case Study content creation published by Emerald Publishing, and
+              many more. With 100% customer satisfaction, we convey our deepest gratitude to
+              everyone who trusted, tried, and believed in us.
             </p>
           </FadeIn>
           <FadeIn delay={0.15}>
             <div className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
-              <WordReveal text="Now writing India's" as="span" />
-              <br />
-              <WordReveal text="anime chapter." as="span" className="text-primary" />
+              <WordReveal text="What we do." as="span" />
             </div>
-            <p className="text-muted/70 leading-relaxed mb-8">
-              TRIO is Vaibhav Studios&apos; most ambitious original — a full-fledged
-              anime born from two decades of craft and an unwavering belief that
-              Indian stories deserve a global stage.
-            </p>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-sm text-muted/70 mb-8">
+              {[
+                '2D Animation',
+                '3D Modelling',
+                'Motion Graphics',
+                'Infographics',
+                'Character Design',
+                'Storyboarding',
+                'VFX',
+                'Video Editing',
+                'Roto',
+                'Logo Design',
+                'Content Creation',
+                'Multimedia',
+              ].map((s) => (
+                <li key={s} className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  {s}
+                </li>
+              ))}
+            </ul>
             <div className="flex flex-wrap gap-4">
               <TransitionLink
                 href="/about"
@@ -100,14 +113,6 @@ export default function AboutSection() {
               >
                 Learn more
               </TransitionLink>
-              <a
-                href="https://www.vaibhavstudios.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-full border border-white/20 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-              >
-                Visit Vaibhav Studios ↗
-              </a>
             </div>
           </FadeIn>
         </div>

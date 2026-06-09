@@ -2,10 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@fontsource-variable/plus-jakarta-sans";
 import "./globals.css";
-import SmoothScroll from "@/components/SmoothScroll";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import PageTransitionProvider from "@/components/PageTransitionProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,26 +15,29 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Trio Anime — India's First Original Anime | Vaibhav Studios",
+    default: "Trio Anime — India's First Original Anime | Vaibhavi Studios",
     template: "%s | Trio Anime",
   },
   description:
-    "Trio is India's first original anime, brought to you by Vaibhav Studios — the only Indian animation studio with an International Emmy nomination. Explore the manga, watch the trailer, and join the journey.",
+    "Trio is India's first original anime, brought to you by Vaibhavi Studios — a creative house specialising in animation, motion graphics, VFX, and design since 2018. Explore the manga, watch the trailer, and join the journey.",
   keywords: [
     "Trio anime",
     "India first anime",
     "original Indian anime",
-    "Vaibhav Studios",
-    "Lamput",
-    "anime studio India",
+    "Vaibhavi Studios",
+    "Vaibhavi Enterprises",
+    "animation studio India",
+    "motion graphics India",
+    "VFX studio India",
     "Indian animation",
     "manga India",
     "anime series",
-    "International Emmy animation",
+    "2D animation",
+    "3D modelling India",
   ],
-  authors: [{ name: "Vaibhav Studios" }],
-  creator: "Vaibhav Studios",
-  publisher: "Vaibhav Studios",
+  authors: [{ name: "Vaibhavi Studios" }],
+  creator: "Vaibhavi Studios",
+  publisher: "Vaibhavi Studios",
   metadataBase: new URL("https://trioanime.com"),
   alternates: {
     canonical: "/",
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "Trio Anime",
     title: "Trio Anime — India's First Original Anime",
     description:
-      "Trio is India's first original anime from Vaibhav Studios — the Emmy-nominated studio behind Lamput.",
+      "Trio is India's first original anime from Vaibhavi Studios — a creative house specialising in animation, motion graphics, VFX, and design since 2018.",
     url: "https://trioanime.com",
     images: [
       {
@@ -64,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trio Anime — India's First Original Anime",
     description:
-      "Trio is India's first original anime from Vaibhav Studios — the Emmy-nominated studio behind Lamput.",
+      "Trio is India's first original anime from Vaibhavi Studios — a creative house specialising in animation, motion graphics, VFX, and design since 2018.",
     images: ["/og-image.png"],
     site: "@trioanime",
   },
@@ -111,13 +110,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <SmoothScroll>
-          <PageTransitionProvider>
-            <Header />
-            <main className="flex-1 snap-y snap-proximity">{children}</main>
-            <Footer />
-          </PageTransitionProvider>
-        </SmoothScroll>
+        {children}
       </body>
     </html>
   );

@@ -5,9 +5,13 @@ import { useScroll, useTransform } from 'framer-motion'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
-import WordReveal from '@/components/WordReveal'
 
-export default function Hero() {
+interface HeroProps {
+  loaderDone?: boolean
+  taglineRef?: React.RefObject<HTMLSpanElement | null>
+}
+
+export default function Hero({ loaderDone = false, taglineRef }: HeroProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [trailerOpen, setTrailerOpen] = useState(false)
   const { scrollYProgress } = useScroll({
@@ -26,15 +30,21 @@ export default function Hero() {
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 flex h-full flex-col justify-end px-5 sm:px-8 pb-30 md:pt-0 md:px-24"
       >
-        <span className="flex flex-wrap text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white tracking-tight max-w-xs sm:max-w-sm md:max-w-3xl">
-          <WordReveal text="First anime of India" as="span" onLoad />
+        {/* Final tagline target. Rendered from the start (for measurement) but
+            kept invisible until the loader flight lands on it. */}
+        <span
+          ref={taglineRef}
+          className="block whitespace-nowrap text-3xl sm:text-5xl md:text-7xl font-display font-bold text-white tracking-tight origin-top-left"
+          style={{ opacity: loaderDone ? 1 : 0 }}
+        >
+          First anime of India
         </span>
 
         <motion.div
           className="mt-8 flex flex-wrap gap-3"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          animate={loaderDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
           <button
             onClick={() => setTrailerOpen(true)}
@@ -54,8 +64,8 @@ export default function Hero() {
       <motion.div
         className="absolute bottom-6 right-5 sm:right-8 z-10 flex items-center gap-5 md:bottom-8"
         initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
+        animate={loaderDone ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+        transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
       >
         <a href="https://www.instagram.com/trioanimee/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-xl" aria-label="Instagram">
           <FontAwesomeIcon icon={faInstagram} />
@@ -67,8 +77,9 @@ export default function Hero() {
 
       <motion.div
         className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 md:bottom-8 hidden sm:block"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        initial={{ opacity: 0 }}
+        animate={loaderDone ? { opacity: 1, y: [0, 10, 0] } : { opacity: 0 }}
+        transition={loaderDone ? { opacity: { duration: 0.5, delay: 0.7 }, y: { duration: 2, repeat: Infinity, delay: 0.7 } } : {}}
       >
         <svg
           className="h-8 w-8 text-primary"
