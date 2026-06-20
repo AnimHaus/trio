@@ -8,10 +8,9 @@ import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 interface HeroProps {
   loaderDone?: boolean
-  taglineRef?: React.RefObject<HTMLSpanElement | null>
 }
 
-export default function Hero({ loaderDone = false, taglineRef }: HeroProps) {
+export default function Hero({ loaderDone = false }: HeroProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [trailerOpen, setTrailerOpen] = useState(false)
   const { scrollYProgress } = useScroll({
@@ -26,20 +25,10 @@ export default function Hero({ loaderDone = false, taglineRef }: HeroProps) {
     <section ref={ref} className="relative h-screen w-full snap-start overflow-hidden">
       <div className="absolute inset-0 bg-black/50" />
 
-      <motion.div
+      {/* <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 flex h-full flex-col justify-end px-5 sm:px-8 pb-30 md:pt-0 md:px-24"
       >
-        {/* Final tagline target. Rendered from the start (for measurement) but
-            kept invisible until the loader flight lands on it. */}
-        <span
-          ref={taglineRef}
-          className="block whitespace-nowrap text-3xl sm:text-5xl md:text-7xl font-display font-bold text-white tracking-tight origin-top-left"
-          style={{ opacity: loaderDone ? 1 : 0 }}
-        >
-          First anime of India
-        </span>
-
         <motion.div
           className="mt-8 flex flex-wrap gap-3"
           initial={{ opacity: 0, y: 30 }}
@@ -59,7 +48,7 @@ export default function Hero({ loaderDone = false, taglineRef }: HeroProps) {
             Start reading the manga
           </a>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
 
       <motion.div
         className="absolute bottom-6 right-5 sm:right-8 z-10 flex items-center gap-5 md:bottom-8"
@@ -70,30 +59,45 @@ export default function Hero({ loaderDone = false, taglineRef }: HeroProps) {
         <a href="https://www.instagram.com/trioanimee/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-xl" aria-label="Instagram">
           <FontAwesomeIcon icon={faInstagram} />
         </a>
-        <a href="#" className="text-white/60 hover:text-primary transition-colors text-xl" aria-label="YouTube">
+        <a href="https://www.youtube.com/@trio.officialanimation" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-xl" aria-label="YouTube">
           <FontAwesomeIcon icon={faYoutube} />
         </a>
       </motion.div>
 
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 md:bottom-8 hidden sm:block"
-        initial={{ opacity: 0 }}
-        animate={loaderDone ? { opacity: 1, y: [0, 10, 0] } : { opacity: 0 }}
-        transition={loaderDone ? { opacity: { duration: 0.5, delay: 0.7 }, y: { duration: 2, repeat: Infinity, delay: 0.7 } } : {}}
+      {/* ── YouTube trailer box — bottom left ────────────── */}
+      <motion.button
+        onClick={() => setTrailerOpen(true)}
+        className="absolute bottom-6 left-5 sm:left-8 z-10 md:bottom-8 flex items-center gap-4 border border-white/20 bg-black/30 backdrop-blur-sm px-5 py-4 rounded hover:border-white/40 hover:bg-black/50 transition-colors cursor-pointer text-left"
+        initial={{ opacity: 0, x: -20 }}
+        animate={loaderDone ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+        transition={{ duration: 0.7, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        aria-label="Watch Manga Trailer"
       >
-        <svg
-          className="h-8 w-8 text-primary"
+        <FontAwesomeIcon icon={faYoutube} className="text-[#FF0000] text-4xl flex-shrink-0" />
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.2em] text-white/50 leading-none mb-1">Manga Trailer</p>
+          <p className="text-sm font-semibold text-white leading-none">Watch now</p>
+        </div>
+      </motion.button>
+
+      {/* ── SCROLL indicator — bottom center ─────────────── */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 md:bottom-8 hidden sm:flex flex-col items-center gap-1"
+        initial={{ opacity: 0 }}
+        animate={loaderDone ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+      >
+        <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/50">Scroll</span>
+        <motion.svg
+          className="h-4 w-4 text-white/50"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </motion.svg>
       </motion.div>
 
       <AnimatePresence>

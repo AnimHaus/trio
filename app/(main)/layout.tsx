@@ -14,7 +14,7 @@ export default function MainLayout({
       <PageTransitionProvider>
         <AuthProvider>
           <Header />
-          <main className="flex-1 snap-y snap-proximity">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </AuthProvider>
       </PageTransitionProvider>

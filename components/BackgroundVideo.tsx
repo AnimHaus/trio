@@ -23,32 +23,34 @@ export default function BackgroundVideo() {
   }, [])
 
   return (
-    <motion.div
-      className="fixed inset-0 -z-10 overflow-hidden max-sm:h-dvh max-sm:w-dvw"
-      style={{ filter: filterStyle }}
-    >
-      <video
-        className="h-full w-full object-cover pointer-events-none max-sm:object-[center_20%]"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
+    <>
+      <motion.div
+        className="fixed inset-0 -z-10 overflow-hidden max-sm:h-dvh max-sm:w-dvw"
+        style={{ filter: filterStyle }}
       >
-        <source src="/background.mp4" type="video/mp4" />
-      </video>
+        <video
+          className="h-full w-full object-cover pointer-events-none max-sm:object-[center_20%]"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src="/background.mp4" type="video/mp4" />
+        </video>
 
-      {/* Duotone: dark shadow colour → brand green */}
-      <div
-        className="absolute inset-0 pointer-events-none mix-blend-color"
-        style={{ background: 'linear-gradient(160deg, #0C0F0E 0%, #9CFE08 100%)', opacity: 0.45 }}
-      />
+        {/* Duotone: dark shadow colour → brand green */}
+        <div
+          className="absolute inset-0 pointer-events-none mix-blend-color"
+          style={{ background: 'linear-gradient(160deg, #0C0F0E 0%, #9CFE08 100%)', opacity: 0.45 }}
+        />
+      </motion.div>
 
-      {/* Coarse grain */}
+      {/* Coarse grain — outside blur so it stays sharp while scrolling */}
       <div
-        className="absolute inset-0 opacity-[0.22] mix-blend-overlay pointer-events-none"
+        className="fixed inset-0 -z-10 opacity-[0.35] mix-blend-overlay pointer-events-none"
         style={{ backgroundImage: noiseBg, backgroundRepeat: 'repeat', backgroundSize: '256px 256px' }}
       />
-    </motion.div>
+    </>
   )
 }

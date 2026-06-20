@@ -31,7 +31,7 @@ export default function Header() {
           transitionDuration: "400ms",
         }}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <nav className="mx-auto flex max-w-8xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <TransitionLink href="/" className="flex items-center gap-3">
             <Image src="/trio.png" alt="Vaibhavi Studios" width={42} height={42} className="h-9 w-auto" />
           </TransitionLink>
