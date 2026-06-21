@@ -36,14 +36,8 @@ function FadeIn({ children, delay = 0, className = '' }: { children: React.React
 
 export default function AboutSection() {
   return (
-    <section className="relative w-full overflow-hidden py-24 md:py-36 bg-black/50 inset-0">
-      {/* Subtle green glow top-right */}
-      <div className="pointer-events-none absolute -right-64 -top-64 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[120px]" />
-      {/* Subtle glow bottom-left */}
-      <div className="pointer-events-none absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-primary/5 blur-[100px]" />
-
+    <section className="relative w-full overflow-hidden py-24 md:py-36 bg-black/50 inset-0 !pb-0">
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-16">
-
         {/* ── Header row ───────────────────────────────────── */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20 md:mb-28">
           <div>

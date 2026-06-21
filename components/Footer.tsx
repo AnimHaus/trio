@@ -59,8 +59,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-card/20 pt-6 text-center text-xs text-muted/50">
-          &copy; {new Date().getFullYear()} Vaibhavi Studios. All rights reserved.
+        <div className="mt-10 border-t border-card/20 pt-6 flex justify-between items-center gap-1 text-xs text-muted/50">
+          <span>&copy; {new Date().getFullYear()} Vaibhavi Studios. All rights reserved.</span>
+          <span>Developed by <a href="https://animhaus.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">AnimHaus</a></span>
         </div>
       </div>
     </footer>
