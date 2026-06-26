@@ -4,10 +4,8 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import TransitionLink from "@/components/TransitionLink"
-import { useAuth } from "@/components/AuthProvider"
 
 export default function Header() {
-  const { user } = useAuth()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -37,13 +35,8 @@ export default function Header() {
           </TransitionLink>
 
           <div className="hidden items-center gap-8 md:flex">
-            <TransitionLink href="/manga" className="text-sm text-muted/70 hover:text-primary transition-colors">Manga</TransitionLink>
-            <TransitionLink href="/about" className="text-sm text-muted/70 hover:text-primary transition-colors">About</TransitionLink>
-            {user ? (
-              <TransitionLink href="/dashboard" className="rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-bg transition-colors hover:bg-primary/90">Dashboard</TransitionLink>
-            ) : (
-              <TransitionLink href="/login" className="rounded-full border border-white/20 px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10">Sign In</TransitionLink>
-            )}
+            <TransitionLink href="/characters" className="text-sm text-muted/70 hover:text-primary transition-colors">Meet the Characters</TransitionLink>
+            <TransitionLink href="/about" className="text-sm text-muted/70 hover:text-primary transition-colors">Visit the Studio</TransitionLink>
           </div>
 
           <button
@@ -69,13 +62,8 @@ export default function Header() {
           >
             <div className="flex flex-col items-center gap-6 text-lg">
               <TransitionLink href="/" className="text-muted/70 hover:text-primary transition-colors" onClick={() => setOpen(false)}>Home</TransitionLink>
-              <TransitionLink href="/manga" className="text-muted/70 hover:text-primary transition-colors" onClick={() => setOpen(false)}>Manga</TransitionLink>
+              <TransitionLink href="/characters" className="text-muted/70 hover:text-primary transition-colors" onClick={() => setOpen(false)}>Meet the Characters</TransitionLink>
               <TransitionLink href="/about" className="text-muted/70 hover:text-primary transition-colors" onClick={() => setOpen(false)}>About</TransitionLink>
-              {user ? (
-                <TransitionLink href="/dashboard" className="text-muted/70 hover:text-primary transition-colors" onClick={() => setOpen(false)}>Dashboard</TransitionLink>
-              ) : (
-                <TransitionLink href="/login" className="text-muted/70 hover:text-primary transition-colors" onClick={() => setOpen(false)}>Sign In</TransitionLink>
-              )}
             </div>
           </motion.div>
         )}

@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import BackgroundVideo from '@/components/BackgroundVideo'
 import Hero from '@/components/Hero'
 import AboutSection from '@/components/AboutSection'
+import CharactersSection from '@/components/CharactersSection'
 import LatestReleases from '@/components/LatestReleases'
 
 export default function HomeClient() {
@@ -24,6 +25,7 @@ export default function HomeClient() {
       <BackgroundVideo />
       <Hero loaderDone={heroReady} />
       <AboutSection />
+      <CharactersSection />
       <LatestReleases />
     </main>
   )
