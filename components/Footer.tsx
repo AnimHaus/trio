@@ -22,7 +22,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-muted/70">
               <li><TransitionLink href="/about" className="hover:text-primary transition-colors">About</TransitionLink></li>
               <li><a href="#" className="hover:text-primary transition-colors">Projects</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
+              <li><a href="https://trio-manga.vercel.app/careers" className="hover:text-primary transition-colors">Careers</a></li>
             </ul>
           </div>
 
