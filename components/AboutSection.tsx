@@ -69,16 +69,6 @@ export default function AboutSection() {
           </FadeIn>
         </div>
 
-        {/* ── Stats row ────────────────────────────────────── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-white/5 mb-20 md:mb-28">
-          {stats.map((s, i) => (
-            <FadeIn key={s.label} delay={i * 0.08} className="border-b border-r border-white/5 px-6 py-8 md:py-10 last:border-r-0 [&:nth-child(2)]:border-r-0 md:[&:nth-child(2)]:border-r">
-              <p className="font-display text-4xl sm:text-5xl font-black text-primary tabular-nums">{s.value}</p>
-              <p className="mt-2 text-xs text-muted/50 uppercase tracking-widest">{s.label}</p>
-            </FadeIn>
-          ))}
-        </div>
-
         {/* ── Two-col body ─────────────────────────────────── */}
         <div className="grid md:grid-cols-2 gap-12 md:gap-20 lg:gap-28">
           {/* Left */}
